@@ -19,9 +19,16 @@ export default {
     })
   },
 
-  updateBooking(id){
-    return fetch(baseURL + id, {
-      method: "PUT"
-    })
+  updateBooking(booking){
+    // console.log("ID", id);
+    // console.log("CHECKED_IN", checkedIn);
+
+    return fetch(baseURL + booking._id, {
+      method: "PUT",
+      body: JSON.stringify(booking),
+      headers: { 'Content-Type': 'application/json'}
+      })
+      .then(res => res.json())
+
   }
 }

@@ -32,19 +32,19 @@ export default {
     eventBus.$on('booking-deleted', (id) => {
       let index = this.bookings.findIndex(booking => booking._id === id)
       this.bookings.splice(index, 1)
-
-    eventBus.$on("booking-updated", (id) => {
-      let index = this.bookings.findIndex(booking => booking._id === id)
-      this.bookings.checked_in
     })
 
-    })
+    // eventBus.$on("booking-updated", (booking) => {
+    //   let index = this.bookings.findIndex(booking => booking._id === id)
+    //   this.bookings.splice(index, 1, booking)
+    // })
   },
   methods: {
     fetchData(){
       BookingService.getBookings()
       .then(bookings => this.bookings = bookings);
     }
+
   }
 };
 </script>

@@ -3,9 +3,8 @@
     <div class="booking" v-for="booking in bookings">
       <h2>{{booking.name}}</h2>
       <h2>{{booking.email}}</h2>
-      <h2>{{booking.checked_in}}</h2>
+      <h2><button type="button" v-on:click="handleUpdate(booking)">{{booking.checked_in}}</button></h2>
       <button type="button" v-on:click="handleClick(booking._id)">Delete Booking</button>
-      <button type="button" v-on:click="handleUpdate(booking._id)">Update Booking</button>
 
     </div>
   </div>
@@ -21,10 +20,12 @@ export default {
 
   methods: {
     handleClick(id){
+      BookingService.deleteBooking(id);
       eventBus.$emit("booking-deleted", id);
     },
-    handleUpdate(id){
-      eventBus.$emit("booking-updated", id);
+    handleUpdate(booking){
+      booking.checked_in = !booking.checked_in
+      BookingService.updateBooking(booking)
     }
   }
 };
