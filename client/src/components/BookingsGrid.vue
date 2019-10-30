@@ -5,6 +5,8 @@
       <h2>{{booking.email}}</h2>
       <h2>{{booking.checked_in}}</h2>
       <button type="button" v-on:click="handleClick(booking._id)">Delete Booking</button>
+      <button type="button" v-on:click="handleUpdate(booking._id)">Update Booking</button>
+
     </div>
   </div>
 </template>
@@ -20,6 +22,9 @@ export default {
   methods: {
     handleClick(id){
       eventBus.$emit("booking-deleted", id);
+    },
+    handleUpdate(id){
+      eventBus.$emit("booking-updated", id);
     }
   }
 };
@@ -33,6 +38,7 @@ export default {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
+  background-image: url(https://www.rwsentosa.com/-/media/project/non-gaming/rwsentosa/hotels/hard-rock-hotel-singapore/hardrockhotelsg-exterior.jpg?mh=666&la=en&h=666&w=1366&mw=1366&hash=7890A13D2C4FE83769F4A571B997007215155027);
 }
 
 h2 {
@@ -40,7 +46,7 @@ h2 {
 	margin: 0;
 }
 
-.sighting {
+.booking {
 	width: 30%;
 	background: rgba(255, 255, 255, 0.7);
 	margin-bottom: 20px;
@@ -48,11 +54,11 @@ h2 {
 }
 
 button {
-	color: #fff;
+	color: dodgerblue;
 	border: none;
 	font-size: 18px;
 	padding: 10px;
 	margin-top: 10px;
-	background: #F55536;
+	background: salmon;
 }
 </style>

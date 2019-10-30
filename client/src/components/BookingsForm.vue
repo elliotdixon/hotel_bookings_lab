@@ -49,6 +49,9 @@ export default {
 h2 {
 	margin: 10px 0;
 	padding: 0;
+  color: red;
+  text-shadow: 5px 5px 5px black;
+  font-style: bold;
 }
 
 form {

@@ -1,8 +1,10 @@
 <template lang="html">
-  <div id="app">
-    <bookings-form/>
-    <bookings-grid :bookings="bookings" />
-  </div>
+  <body>
+    <div id="app">
+      <bookings-form/>
+      <bookings-grid :bookings="bookings" />
+    </div>
+  </body>
 </template>
 
 <script>
@@ -24,12 +26,18 @@ export default {
   },
   mounted() {
     this.fetchData();
-    
+
     eventBus.$on("booking-added", (booking) => {this.bookings.push(booking)});
 
     eventBus.$on('booking-deleted', (id) => {
       let index = this.bookings.findIndex(booking => booking._id === id)
       this.bookings.splice(index, 1)
+
+    eventBus.$on("booking-updated", (id) => {
+      let index = this.bookings.findIndex(booking => booking._id === id)
+      this.bookings.checked_in
+    })
+
     })
   },
   methods: {
@@ -42,4 +50,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+body {
+
+  background-color: salmon;
+
+}
+
 </style>
